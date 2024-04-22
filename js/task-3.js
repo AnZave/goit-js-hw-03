@@ -1,27 +1,15 @@
-function checkForSpam(message) {
-  const bListWord1 = 'spam';
-  const bListWord2 = 'sale';
-  if (message.toLowerCase().includes(bListWord1)) {
-    return true;
-  } else if (message.toLowerCase().includes(bListWord2)) {
-    return true;
-  } else {
-    return false;
+function filterArray(numbers, value) {
+  let newNumbers = [];
+  for (const elem of numbers) {
+    if (elem > value) {
+      newNumbers.push(elem);
+    }
   }
+  return newNumbers;
 }
 
-checkForSpam('Latest technology news'); // false
-checkForSpam('JavaScript weekly newsletter'); // false
-checkForSpam('Get best sale offers now!'); // true
-checkForSpam('Amazing SalE, only tonight!'); // true
-checkForSpam('Trust me, this is not a spam message'); // true
-checkForSpam('Get rid of sPaM emails. Our book in on sale!'); // true
-checkForSpam('[SPAM] How to earn fast money?'); // true
-
-console.log(checkForSpam('Latest technology news')); // false
-console.log(checkForSpam('JavaScript weekly newsletter')); // false
-console.log(checkForSpam('Get best sale offers now!')); // true
-console.log(checkForSpam('Amazing SalE, only tonight!')); // true
-console.log(checkForSpam('Trust me, this is not a spam message')); // true
-console.log(checkForSpam('Get rid of sPaM emails. Our book in on sale!')); // true
-console.log(checkForSpam('[SPAM] How to earn fast money?')); // true
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
